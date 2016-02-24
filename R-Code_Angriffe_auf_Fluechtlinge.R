@@ -24,7 +24,7 @@ p <- ggplot() +
   geom_point(data = dat, aes(x=lon, y=lat, size=Angriffe.pro.EW, alpha=Angriffe.pro.Antrag)) +
   scale_size(range=c(5,20)) +
   scale_alpha(range = c(0.25, 1.0)) +
-  labs(size="Angriffe pro 100000 Einwohner", alpha="Angriffe pro 1000 Anträge")+
+  labs(size="Angriffe pro 100000 Einwohner", alpha="Angriffe pro 100 Anträge")+
   ggtitle("Angriffe auf Flüchtlinge und \n Flüchtlingsunterkünfte 2015") + 
   theme(plot.title = element_text(size=20, face="bold"),
         panel.grid.major = element_blank(),
