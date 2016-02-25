@@ -13,19 +13,19 @@ map_df <- fortify(map)
 map_dat <- merge(map_df,dat,by="id")
 dat <- cbind(dat,geocode(as.character(dat$name), source = "google"))
 
-refs <- "Anzahl der Angriffe: http://www.mut-gegen-rechte-gewalt.de \n AuslÃ¤ndische BevÃ¶lkerung: Statistisches Bundesamt \n Anzahl der AsylantrÃ¤ge: Bundesamt fÃ¼r Migration und FlÃ¼chtlinge"
+refs <- "Anzahl der Angriffe: http://www.mut-gegen-rechte-gewalt.de \n Ausländische Bevölkerung: Statistisches Bundesamt \n Anzahl der Asylanträge: Bundesamt für Migration und Flüchtlinge"
 
 
 p <- ggplot() + 
-  geom_polygon(data = map_dat,aes(x=long,y=lat,group=group, fill=Anteil_auslÃ¤ndischer_BevÃ¶lkerung))+
-  labs(fill="Anteil auslÃ¤ndischer BevÃ¶lkerung") +
+  geom_polygon(data = map_dat,aes(x=long,y=lat,group=group, fill=Anteil_ausländischer_Bevölkerung))+
+  labs(fill="Anteil ausländischer Bevölkerung") +
   geom_path(data=map_dat, aes(x=long,y=lat, group=group), size=0.01)+
   scale_fill_gradient(low="lightskyblue1", high="deepskyblue2") +
   geom_point(data = dat, aes(x=lon, y=lat, size=Angriffe.pro.EW, alpha=Angriffe.pro.Antrag)) +
   scale_size(range=c(5,20)) +
   scale_alpha(range = c(0.25, 1.0)) +
-  labs(size="Angriffe pro 100000 Einwohner", alpha="Angriffe pro 100 AntrÃ¤ge")+
-  ggtitle("Angriffe auf FlÃ¼chtlinge und \n FlÃ¼chtlingsunterkÃ¼nfte 2015") + 
+  labs(size="Angriffe pro 100000 Einwohner", alpha="Angriffe pro 100 Asylanträge")+
+  ggtitle("Angriffe auf Flüchtlinge und \n Flüchtlingsunterkünfte 2015") + 
   theme(plot.title = element_text(size=20, face="bold"),
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
